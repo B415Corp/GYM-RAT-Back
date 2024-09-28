@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { WorkoutsController } from './controller/workouts.controller';
 import { Workout, WorkoutSchema } from './schemas/workouts.schema';
-import { WorkoutsController } from './workouts.controller';
-import { WorkoutsService } from './workouts.service';
+import { WorkoutsService } from './service/workouts.service';
 
 @Module({
   imports: [

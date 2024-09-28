@@ -6,8 +6,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('API с JWT авторизацией')
-    .setDescription('Документация API с авторизацией по логину и паролю')
+    .setTitle('GYM-RAT API')
+    .setDescription('Документация GYM-RAT API')
     .setVersion('1.0')
     .addBearerAuth(
       // Добавляем JWT авторизацию

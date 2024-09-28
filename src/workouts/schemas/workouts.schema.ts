@@ -6,7 +6,10 @@ export type WorkoutDocument = Workout & Document;
 
 @Schema()
 export class Workout {
-  @ApiProperty({ example: 'admin', description: 'The name of the user' })
+  @ApiProperty({
+    example: '66ebe6a42333ad8ddd9f04e6',
+    description: 'ID of the user',
+  })
   @Prop({ required: true, type: String, ref: 'User' })
   user_id: string;
 
@@ -32,19 +35,9 @@ export class Workout {
   @Prop({ required: true, type: Date })
   date: Date;
 
-  @ApiProperty({
-    example: new Date().toISOString(),
-    description: 'The date when the workout was created',
-    default: new Date(),
-  })
   @Prop({ default: new Date(), type: Date })
   date_create: Date;
 
-  @ApiProperty({
-    example: new Date().toISOString(),
-    description: 'The date when the workout was last edited',
-    default: new Date(),
-  })
   @Prop({ default: new Date(), type: Date })
   date_edit: Date;
 }

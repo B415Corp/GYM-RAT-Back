@@ -1,14 +1,16 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
-import { JwtStrategy } from './jwt.strategy'; // Для защиты маршрутов с JWT
-import { LocalStrategy } from './local.strategy';
 import { UserModule } from 'src/user/user.module';
+import { AuthController } from './controller/auth.controller';
+import { AuthService } from './service/auth.service';
+import { JwtStrategy } from './strategy/jwt.strategy'; // Для защиты маршрутов с JWT
+import { LocalStrategy } from './strategy/local.strategy';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(), // Импорт ConfigModule
     UserModule,
     PassportModule,
     JwtModule.register({
@@ -18,5 +20,6 @@ import { UserModule } from 'src/user/user.module';
   ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, JwtStrategy],
+  exports: [AuthService],
 })
 export class AuthModule {}
